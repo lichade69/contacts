@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Richard Yang">
+    <title>Contacts</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <h1>Contacts</h1>
+    <div id="contactsList">
+        Slot # | Name
+    </div>
+    <h2 id="exitMessage"></h2>
+    <script>
+        let contacts = ["Arnold", "Sly", "Dwayne", "Vin", "JCVD", "Steven"];
+        let contactsListDiv = document.getElementById('contactsList');
+
+        for (let i = 0; i < contacts.length; i++) {
+            contactsListDiv.innerText += `\n${i} | ${contacts[i]}`;
+        }
+
+        while (true) {
+            let entryNumber = prompt("Please provide an Entry Number:");
+            if (contacts[entryNumber]) {
+                let name = contacts[entryNumber];
+                let userResponse = prompt(`Displaying ${name}.\nDo you want to make another selection y/n?`).toLowerCase();
+                if (userResponse != 'y') {
+                    break;
+                }
+            }
+            else {
+                let userResponse = prompt("That Entry is not in the Database.\nDo you want to make another selection y/n?").toLowerCase();
+                if (userResponse != 'y') {
+                    break;
+                }
+            }
+        }
+
+        document.getElementById('exitMessage').innerText = 'Thank you for using the Contacts Database!';
+    </script>
+</body>
+
+</html>
